@@ -14,6 +14,7 @@ export MH_HOME=/home/pxuan/software/myHadoop
 export PATH=$HADOOP_HOME/bin:$MH_HOME/bin:$PATH
 export HADOOP_CONF_DIR=$PBS_O_WORKDIR/hadoop-conf
 export PBS_NUM_NODES=`cat $PBS_NODEFILE | uniq | wc -l`
+export JAVA_HOME=/home/pxuan/software/jdk-1.7
 
 ### 1. Setup Hadoop configuration files
 myhadoop-configure.sh -s /local_scratch/$USER/$PBS_JOBID
