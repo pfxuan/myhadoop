@@ -4,7 +4,7 @@
 #PBS -q workq
 #PBS -l select=4:ncpus=16
 #PBS -l place=scatter
-#PBS -l walltime=2:00:00
+#PBS -l walltime=72:00:00
 #PBS -j oe
 
 ### 0. Setup environment variables
@@ -24,14 +24,15 @@ $HADOOP_HOME/bin/start-all.sh
 sleep 50
 
 ### 3. Copy input files to HDFS (stage-in)
-$HADOOP_HOME/bin/hadoop dfs -mkdir data
-$HADOOP_HOME/bin/hadoop dfs -put $HADOOP_HOME/CHANGES.txt data/
+# $HADOOP_HOME/bin/hadoop dfs -mkdir data
+# $HADOOP_HOME/bin/hadoop dfs -put $HADOOP_HOME/CHANGES.txt data/
 
 ### 4. Run MapReduce job
-$HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/hadoop-examples-*.jar wordcount data wordcount-output
+# $HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/hadoop-examples-*.jar wordcount data wordcount-output
+sleep 255600
 
 ### 5. Copy output files from HDFS to your home directory (stage-out)
-$HADOOP_HOME/bin/hadoop dfs -get wordcount-output ./
+# $HADOOP_HOME/bin/hadoop dfs -get wordcount-output ./
 
 ### 6. Stop Hadoop services
 $HADOOP_HOME/bin/stop-all.sh
